@@ -1,33 +1,62 @@
-@tailwind base;
+/* styles/globals.css */
+@tailwind base ;
 @tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@tailwind utilites;
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #d4e9f3, #fbf3fb);
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+main {
+  padding: 20px;
 }
+
+input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 20px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff7e5f;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #feb47b;
+}
+.searchBox {
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.filterBox {
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake:hover {
+  animation: shake 0.5s;
+}
+

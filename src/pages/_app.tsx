@@ -1,6 +1,12 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+// _app.tsx
+import React from 'react';
+import { AppProps } from 'next/app';
+// import { UserProvider } from '../../src/pages/job/userContext';
+import '../styles/globals.css'
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  
+    <Component {...pageProps} />
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+);
+
+export default MyApp;
