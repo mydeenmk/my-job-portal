@@ -60,3 +60,32 @@ button:hover {
   animation: shake 0.5s;
 }
 
+.arsenal-sc-regular {
+  font-family: "Arsenal SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.arsenal-sc-bold {
+  font-family: "Arsenal SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.arsenal-sc-regular-italic {
+  font-family: "Arsenal SC", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.arsenal-sc-bold-italic {
+  font-family: "Arsenal SC", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+.playwrite-cz-title {
+  font-family: "Playwrite CZ", cursive;
+  font-optical-sizing: auto;
+  font-weight:  400;
+  font-style: normal;
+}

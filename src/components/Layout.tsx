@@ -88,7 +88,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
+          <Typography variant="h6" style={{ flexGrow: 1 }} className='arsenal-sc-bold-italic'>
             Digi jobs
           </Typography>
           <IconButton color="inherit" onClick={handleNotificationClick}>
