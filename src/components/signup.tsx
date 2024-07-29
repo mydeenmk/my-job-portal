@@ -1,11 +1,13 @@
-// components/SignUp.tsx
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'; 
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
-import { Button, TextField, Container, Typography} from '@material-ui/core';
-
+import { Button, TextField, Container, Typography, Snackbar,Link } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import '../styles/globals.css';
+import nookies from 'nookies';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,10 +48,14 @@ const SignUp = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom>Sign Up</Typography>
-      {/* {error && <Alert severity="error">{error}</Alert>}
-      {success && <Alert severity="success">{success}</Alert>} */}
+    <Container maxWidth="sm" className="signup-container" style={{marginTop:'130px'}}>
+      <Typography variant="h4" gutterBottom align="center" className="signup-title">
+        <WorkOutlineIcon style={{ marginLeft: '120px' }} />
+        Digi Jobs
+      </Typography>
+      <Typography variant="h5" gutterBottom align="center">
+        Sign Up
+      </Typography>
       <TextField
         label="Name"
         fullWidth
@@ -83,10 +89,37 @@ const SignUp = () => {
         variant="contained" 
         color="primary" 
         onClick={handleSignUp}
-        style={{ marginTop: '16px' }}
+        style={{ marginTop: '16px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
       >
         Sign Up
       </Button>
+
+      <Typography variant="body2" align="center" style={{ marginTop: '16px' }}>
+        Already have an account?{' '}
+        <Link href="/signin" color="secondary">
+          Sign In
+        </Link>
+      </Typography>
+
+      <Snackbar 
+        open={!!error} 
+        autoHideDuration={6000} 
+        onClose={() => setError(null)}
+      >
+        <Alert onClose={() => setError(null)} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar 
+        open={!!success} 
+        autoHideDuration={6000} 
+        onClose={() => setSuccess(null)}
+      >
+        <Alert onClose={() => setSuccess(null)} severity="success">
+          {success}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

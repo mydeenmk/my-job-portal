@@ -12,18 +12,16 @@ import Link from "next/link"
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from '../../firebaseConfig'; // Ensure you have this import
 import { collection, onSnapshot, } from 'firebase/firestore';
-
-
+import cookie from 'js-cookie';  
 interface LayoutProps {
   children: ReactNode;
 }
 
 const useStyles = makeStyles(() => ({
-
   drawerPaper: {
     width: 210,
     background: 'linear-gradient(to right, #b3e5fc, #b2bbbe);',
-    color: 'inherite',
+    color: 'inherit',
     alignItems: 'center',
     marginTop: 64,
     borderTopRightRadius: '10px'
@@ -46,22 +44,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const classes = useStyles();
   const router = useRouter();
   const [initial, setInitial] = useState<string>('');
+
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // Set the user's display name initial
-        const email = user.email|| '';
+        const email = user.email || '';
         const firstLetter = email.charAt(0).toUpperCase();
         setInitial(firstLetter);
       } else {
         // Handle case when user is not logged in (e.g., redirect)
-        router.push('/login');
+        router.push('/signin');
       }
     });
-  
+
     return () => unsubscribe();
   }, [router]);
+
   useEffect(() => {
     const unsub = onSnapshot(collection(db, 'jobposts'), (snapshot) => {
       setNotificationCount(snapshot.size);
@@ -73,23 +73,26 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
+
   const handleLogout = () => {
-    localStorage.removeItem('userToken'); // Assuming you store your token with key 'userToken'
-    router.push('/signin');
+    cookie.remove('authToken'); // Remove the token from cookies
+    localStorage.removeItem('role'); // Optionally clear the user role from local storage
+    router.push('/signin'); // Redirect to the sign-in page
   };
+
   const handleNotificationClick = () => {
     router.push('/notifications'); // Navigate to notifications page
   };
-  
+
   return (
     <>
-      <AppBar position="fixed" style={{borderBottomRightRadius:'10px',borderBottomLeftRadius:'10px'}} >
+      <AppBar position="fixed" style={{ borderBottomRightRadius: '10px', borderBottomLeftRadius: '10px' }}>
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" style={{ flexGrow: 1 }} className='arsenal-sc-bold-italic'>
-            Digi jobs
+            Digi Jobs
           </Typography>
           <IconButton color="inherit" onClick={handleNotificationClick}>
             <Badge badgeContent={notificationCount} color="secondary">
@@ -97,17 +100,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </Badge>
           </IconButton>
           <Link href="/userprofile" passHref>
-      <IconButton color="inherit">
-        <Avatar style={{color:'white'}}>{initial}</Avatar>
-      </IconButton>
-    </Link>
-
+            <IconButton color="inherit">
+              <Avatar style={{ color: 'white' }}>{initial}</Avatar>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
-      <Drawer open={drawerOpen} onClose={toggleDrawer} classes={{ paper: classes.drawerPaper }}  >
-        {/* <Typography variant="h4">
-            Digi jobs
-          </Typography> */}
+      <Drawer open={drawerOpen} onClose={toggleDrawer} classes={{ paper: classes.drawerPaper }}>
         <List>
           <ListItem button>
             <ListItemText primary="Home" classes={{ primary: classes.menuItemText }} />
@@ -115,12 +114,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <ListItem button>
             <ListItemText primary="Profile" classes={{ primary: classes.menuItemText }} />
           </ListItem>
-
           <ListItem button>
             <ListItemText primary="Settings" classes={{ primary: classes.menuItemText }} />
           </ListItem>
-          <ListItem button>
-            <ListItemText onClick={handleLogout} primary="Log out" classes={{ primary: classes.menuItemText }} />
+          <ListItem button onClick={handleLogout}>
+            <ListItemText primary="Log out" classes={{ primary: classes.menuItemText }} />
           </ListItem>
         </List>
       </Drawer>

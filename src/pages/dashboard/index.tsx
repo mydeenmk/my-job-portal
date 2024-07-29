@@ -4,7 +4,6 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import Layout from '../../components/Layout';
 import { BottomNavigation, BottomNavigationAction, Card, TextField,CircularProgress,Typography } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
-import PersonIcon from '@material-ui/icons/Person';
 import ExploreIcon from '@material-ui/icons/Explore';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import { useRouter } from 'next/router';

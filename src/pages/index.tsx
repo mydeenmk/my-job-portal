@@ -51,24 +51,24 @@
 // export default  HomePage;
 // pages/index.tsx
 import React from 'react';
-import Link from "next/link"
-import { Button } from '@material-ui/core';
-import '../styles/globals.css'
-// import { Container, Typography, Button } from '@mui/material';
+import '../styles/globals.css';
+import SignInPage from './signin';
+import jobportal from './jobportal';
+import Jobportal from './jobportal';
 const Home: React.FC = () => {
+  
   return (
-    
-      <><Link href="/signin" passHref>
-      <Button variant="contained" color="primary" component="a">
-        Sign In
-      </Button>
-    </Link><Link href="/signup" passHref>
-        <Button variant="contained" color="secondary" component="a">
-          Sign Up
-        </Button>
-      </Link></>
-  )
-   
+    <>
+     
+        <>
+          <Jobportal/>
+         
+        </>
+       
+     {/* <HomePage/> */}
+    </>
+  );
 };
 
 export default Home;
+
