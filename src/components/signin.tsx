@@ -9,6 +9,9 @@ import cookie from 'js-cookie';  // Import js-cookie for handling cookies
 import '../styles/globals.css';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+
+
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

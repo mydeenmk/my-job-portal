@@ -143,8 +143,8 @@ const HomePage: React.FC = () => {
               marginBottom: '10px', // Reduce space between cards
               marginLeft:'25px'
             }}>
-              <h2 style={{ margin: '5px 0', fontSize: '20px', fontWeight:'bold' }}>Job: {job.title}</h2>
-              <h4 style={{ margin: '5px 0', fontSize: '15px',fontWeight:'bold' }}>Company: {job.company}</h4>
+              <h2 style={{ margin: '5px 0', fontSize: '20px', fontWeight:'bold', fontFamily:'cursive' }}>Job: {job.title}</h2>
+              <h4 style={{ margin: '5px 0', fontSize: '15px',fontWeight:'lighter' }}>Company: {job.company}</h4>
               <h5 style={{ margin: '5px 0', fontSize: '13px' }}>Location: {job.location}</h5>
               <h6 style={{ margin: '5px 0', fontSize: '11px' }}> Salary: {job.salary}</h6>
               {/* <button style={{ marginTop: '5px' }}>Apply</button> */}

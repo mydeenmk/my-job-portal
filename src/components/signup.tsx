@@ -7,7 +7,8 @@ import { Button, TextField, Container, Typography, Snackbar,Link } from '@mui/ma
 import Alert from '@mui/material/Alert';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import '../styles/globals.css';
-import nookies from 'nookies';
+
+
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
